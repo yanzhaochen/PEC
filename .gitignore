@@ -1,3 +1,11 @@
+# models and data
+.data
+data/
+.saved_model
+saved_model/
+log/
+.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
