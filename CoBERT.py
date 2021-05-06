@@ -9,7 +9,7 @@ import sys
 import time
 import json
 import math
-from collections import Counter, OrderedDict
+from collections import OrderedDict
 
 import numpy as np
 import torch
