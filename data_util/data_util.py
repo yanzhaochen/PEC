@@ -1,5 +1,6 @@
 import pickle
-from pprint import pprint
+import os
+
 
 from transformers import BertTokenizer
 
@@ -7,7 +8,7 @@ from model import BertForMultiLabelClassification
 from multilabel_pipeline import MultiLabelPipeline
 
 
-def txt_to_pkl(txt_file, pkl_file):
+def tokenize_conversations_with_emotions(txt_file, pkl_file):
     sentitokenizer = BertTokenizer.from_pretrained(
         "monologg/bert-base-cased-goemotions-ekman"
     )
@@ -58,10 +59,15 @@ def txt_to_pkl(txt_file, pkl_file):
 
     with open(pkl_file, "wb",) as ff:
         pickle.dump(conversations, ff)
-    print("finished")
+    print("Finished:", pkl_file)
 
 
 if __name__ == "__main__":
+    # emotions = ["casualconversaion", "happy", "offmychest"]
+    # names = ["train", "valid", "test"]
+    # source = "data/cleaned/{}/{}.txt"
+    # target = "data/cleaned/{}/{}.pkl"
     source = "data/cleaned/happy/train.txt"
     target = "data/cleaned/happy/train.pkl"
-    txt_to_pkl(source, target)
+    if not os.path.exists(target):
+        tokenize_conversations_with_emotions(source, target)
