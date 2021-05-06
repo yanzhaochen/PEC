@@ -35,10 +35,10 @@ def txt_to_pkl(txt_file, pkl_file):
                     # print(us_id, "****" + fields[0] + "****", fields[1])
                     # 0 ****HeWentToJared91**** found out this morning i got a job promotion ! ! !
 
-                    sents = [fields[1].replace("'", "")]
+                    sent = [fields[1].replace("'", "")]
                     # 'found out this morning i got a job promotion ! ! !'
 
-                    labeldict = goemotions(sents)
+                    labeldict = goemotions(sent)
                     # pprint(labeldict)
                     # [{'labels': ['joy', 'neutral'], 'scores': [0.37095714, 0.5489171]}]
 
@@ -46,7 +46,7 @@ def txt_to_pkl(txt_file, pkl_file):
                     # print(labels)
                     # ['joy', 'neutral']
 
-                    uttr = (fields[0], labels + sents)
+                    uttr = (fields[0], labels + sent)
                     # print(uttr)
                     # ('HeWentToJared91', ['joy', 'neutral', 'found out this morning i got a job promotion ! ! !'])
                     conversation.append(uttr)
